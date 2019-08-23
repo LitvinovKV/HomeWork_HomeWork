@@ -1,0 +1,22 @@
+﻿@model HomeWorkApp.Models.ArticleModel
+
+@{
+    ViewBag.Title = "Обновить статью";
+}
+
+<h2>Обновить данные статьи</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary(true)
+
+        @Html.EditorForModel(Model)
+        <p style="font-weight:bold">Изменить родительский подкаталог:</p>
+        @Html.DropDownListFor(Model => Model.SubCatalogId_Update, TempData["items"] as IEnumerable<SelectListItem>)
+        <p><button type="submit">Редактировать</button></p>
+    </div>
+}
+

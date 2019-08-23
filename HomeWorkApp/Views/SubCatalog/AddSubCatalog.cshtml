@@ -1,0 +1,20 @@
+﻿@model HomeWorkApp.Models.SubCatalogModel
+
+@{
+    ViewBag.Title = "Добавить подкаталог";
+}
+
+
+<h2>Добавить подкаталог</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div>
+        @Html.ValidationSummary(true)
+
+        @Html.EditorForModel(Model)
+        <p><button type="submit">Добавить</button></p>
+    </div>
+}
+

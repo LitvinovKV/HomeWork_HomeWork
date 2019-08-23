@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Каталог";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div style="font-weight:bold">
+        <h1 style="display:inline-block">КАТАЛОГ:</h1>
+        <a href="@Url.Action("AddSubCatalog", "SubCatalog") ">Добавить</a>
+    </div>
+}
+else
+{
+    <h1 style="display:inline-block">КАТАЛОГ:</h1>
+}
+<div id="generalCatalogs">@Html.Action("SubCatalogCatalogs", "SubCatalog")</div>

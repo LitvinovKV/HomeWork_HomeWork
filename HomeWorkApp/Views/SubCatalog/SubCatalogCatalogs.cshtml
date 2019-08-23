@@ -1,0 +1,38 @@
+﻿@model IEnumerable<HomeWorkApp.Models.SubCatalog>
+
+@if (Model.Count() > 0)
+{
+    foreach (var subCatalog in Model)
+    {
+        <ol id="@subCatalog.Id">
+            <div class="catalogName">
+                @subCatalog.Name
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="myA" href="@Url.Action("AddSubCatalog", "SubCatalog", new { parentId = subCatalog.Id }) ">Добавить Подкаталог</a> <p style="display:inline-block">|</p>
+                    <a class="myA" href="@Url.Action("AddArticle", "Article", new { catalogId = subCatalog.Id }) ">Добавить Статью</a> <p style="display:inline-block">|</p>
+                    <a class="myA deleteSubCatalog" id="@subCatalog.Id" href="#">Удалить</a> <p style="display:inline-block">|</p>
+                    <a class="myA" href="@Url.Action("UpdateSubcatalog", "SubCatalog", new { idSubCatalog = subCatalog.Id }) ">Редактировать</a>
+                }
+            </div>
+            
+            <div>
+                <div class="subCatalogs childCatalog_@subCatalog.Id @subCatalog.Id" value="false">
+                    Подкаталоги
+                </div>
+                <div id="childCatalog_@subCatalog.Id"></div>
+            </div>
+
+            <div>
+                <div class="subCatalogArticles childArticles_@subCatalog.Id @subCatalog.Id" value="false">
+                    Статьи
+                </div>
+                <div id="childArticles_@subCatalog.Id" ></div>
+            </div>
+        </ol>
+    }
+}
+else
+{
+        <ol>Нет подкаталогов</ol>
+}

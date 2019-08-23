@@ -1,0 +1,16 @@
+﻿@model IEnumerable<HomeWorkApp.Models.Article>
+
+@if (Model.Count() > 0)
+{
+    foreach (var article in Model)
+    {
+        <ol>
+            <a href="@Url.Action("ArticleInfo", new { articleId = article.Id })">@article.Name</a>
+        </ol>
+    }
+}
+else
+{
+    <ol>Нет статей</ol>
+}
+

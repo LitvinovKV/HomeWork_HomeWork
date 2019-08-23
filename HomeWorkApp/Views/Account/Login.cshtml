@@ -1,0 +1,25 @@
+﻿@model HomeWorkApp.Models.LoginUserModel
+@{
+    ViewBag.Title = "Войти";
+}
+
+<h2>Вход на сайт</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary()
+        <p>
+            <label>Имя пользователя</label><br />
+            @Html.EditorFor(u => u.UserName)
+        </p>
+        <p>
+            <label>Пароль</label><br />
+            @Html.EditorFor(u => u.Password)
+        </p>
+        <p><button type="submit">Войти</button></p>
+    </div>
+}
+

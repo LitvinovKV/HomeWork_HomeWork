@@ -1,0 +1,14 @@
+﻿@model HomeWorkApp.Models.ArticleModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a href="@Url.Action("DeleteArticle", "Article", new { articleId = Model.Id }) ">Удалить</a>
+    <a href="@Url.Action("UpdateArticle", "Article", new { articleId = Model.Id }) ">Редактировать</a>
+}
+
+@Html.DisplayForModel(Model)
+

@@ -1,0 +1,20 @@
+﻿@model HomeWorkApp.Models.SubCatalogModel
+
+@{
+    ViewBag.Title = "Обновить подкаталог";
+}
+
+<h2>Обновить подкаталог</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div>
+    @Html.ValidationSummary(true)
+
+    @Html.EditorForModel(Model)
+    <p style="font-weight:bold">Изменить родительский подкаталог:</p>
+    @Html.DropDownListFor(Model => Model.ParentId_Update, TempData["items"] as SelectList)
+    <p><button type="submit">Редактировать</button></p>
+</div>
+}

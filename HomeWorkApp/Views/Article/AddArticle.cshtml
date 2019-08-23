@@ -1,0 +1,19 @@
+﻿@model HomeWorkApp.Models.ArticleModel
+
+@{
+    ViewBag.Title = "Добавить статью";
+}
+
+<h2>Добавить статью</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary(true)
+
+        @Html.EditorForModel(Model)
+        <p><button type="submit">Добавить</button></p>
+    </div>
+}
+
